@@ -3,8 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { user } from './entities/user.entity';
+import { User } from './entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,11 +22,12 @@ import { AuthModule } from './auth/auth.module';
         password: configService.get<string>('DB_PASSWORD')!,
         database: configService.get<string>('DB')!,
         synchronize: true,
-        entities: [user],
-        dropSchema: true,
+        entities: [User],
+        //dropSchema: true,
       }),
     }),
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

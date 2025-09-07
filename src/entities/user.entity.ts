@@ -1,3 +1,4 @@
+// create an index on username or email to fastly retrive cols after studying more in DB
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -9,7 +10,7 @@ export enum UserRole {
   GENERAL = 'general',
 }
 @Entity()
-export class user {
+export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
